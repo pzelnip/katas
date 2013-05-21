@@ -1,23 +1,20 @@
 package com.seeker.anagramkata;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URI;
+import java.io.InputStream;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
 
 public class RunMe {
     public static List<String> openWordList() throws IOException, URISyntaxException {
-        URL url = RunMe.class.getResource("/wordlist.txt");
-        URI uri = url.toURI();
-        File file = new File(uri);
-        return FileUtils.readLines(file);
+        InputStream istream = RunMe.class.getResourceAsStream("/wordlist.txt");
+        String result = new Scanner(istream).useDelimiter("\\A").next();
+        return Arrays.asList(result.split("\\n"));
     }
     
     public static List<String> theAnswer() {
@@ -28,8 +25,9 @@ public class RunMe {
         System.out.println(theAnswer());
         List<String> lines = openWordList();
         
-        for (String line : lines) {
-            System.out.println(line);
+        // print out 1st 10 lines
+        for (int x = 0; x < 10; x++) {
+            System.out.println(lines.get(x));
         }
     }
 }
