@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 import org.apache.commons.lang3.StringUtils;
 
-
 public class RunMe {
     public static List<String> openWordList() {
         InputStream istream = RunMe.class.getResourceAsStream("/wordlist.txt");
@@ -21,8 +20,8 @@ public class RunMe {
     
     public static void main(final String [] args) {
         System.out.println(theAnswer());
-        List<String> lines = openWordList();
         
+        List<String> lines = openWordList();
         // print out 1st 10 lines
         for (int x = 0; x < 10; x++) {
             System.out.println(lines.get(x));
