@@ -15,13 +15,6 @@ import com.google.common.collect.Sets;
 public class TestRunMe {
 
     @Test
-    public void testTheAnswer() {
-        List<String> expected = Arrays.asList("This", "is", "the", "answer", "--", "42");
-        List<String> result = RunMe.theAnswer();
-        assertEquals(expected, result);
-    }
-
-    @Test
     public void findAnagramsInListFindsAllAnagramsWithSmallInput() {
         List<String> input = Arrays.asList("no", "on", "bo");
         Set<Set<String>> expected = new HashSet<Set<String>>();
@@ -59,6 +52,5 @@ public class TestRunMe {
         String word2 = "star";
         
         assertFalse(RunMe.isAnagram(word1, word2));
-        
     }
 }
