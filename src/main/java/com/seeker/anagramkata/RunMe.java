@@ -2,15 +2,12 @@ package com.seeker.anagramkata;
 
 import java.io.InputStream;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
-
-import com.google.common.primitives.Chars;
 
 public class RunMe {
     public static List<String> openWordList() {
@@ -27,7 +24,8 @@ public class RunMe {
         System.out.println(theAnswer());
         
         List<String> lines = openWordList();
-        lines = Arrays.asList("no", "on", "bo");
+//        lines = Arrays.asList("no", "on", "bo", "fred", "refd", "fedr");
+        System.out.println("There are " + lines.size() + " words");
         Set<Set<String>> anagrams = findAnagramsInList(lines);
         for (Set<String> group : anagrams) {
             System.out.println(group);
@@ -57,11 +55,11 @@ public class RunMe {
 
     public static boolean isAnagram(final String word1, final String word2) {
         if (word1.length() == word2.length()) {
-            List<Character> word1list = Chars.asList(word1.toCharArray());
-            Collections.sort(word1list);
-            List<Character> word2list = Chars.asList(word2.toCharArray());
-            Collections.sort(word2list);
-            return word1list.equals(word2list);
+            char [] word1arr = word1.toCharArray();
+            Arrays.sort(word1arr);
+            char [] word2arr = word2.toCharArray();
+            Arrays.sort(word2arr);
+            return Arrays.equals(word1arr, word2arr);
         }
         return false;
     }
