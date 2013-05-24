@@ -35,18 +35,18 @@ public class RunMe {
             String word = inputq.remove();
             Set<String> group = new HashSet<String>();
             group.add(word);
-            Set<String> toRemove = new HashSet<String>();
-            
-            for (String possible : inputq) {
+
+            Queue<String> dupe = new LinkedList<String>();
+            while (inputq.size() != 0) {
+                String possible = inputq.remove();
                 if (isAnagram(possible, word)) {
-                    toRemove.add(possible);
                     group.add(possible);
+                } else {
+                    dupe.add(possible);
                 }
             }
-            
-            inputq.removeAll(toRemove);
-
             result.add(group);
+            inputq = dupe;
         }
         return result;
     }
