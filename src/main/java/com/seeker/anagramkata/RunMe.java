@@ -4,6 +4,8 @@ import java.io.InputStream;
 import java.util.*;
 import java.util.Map.Entry;
 
+import com.google.inject.internal.util.Lists;
+
 public class RunMe {
 
     public static List<String> openWordList() {
@@ -48,13 +50,21 @@ public class RunMe {
     
     public static Set<Set<String>> findAnagramsInList(final List<String> inputIn) {
         Set<Set<String>> result = new HashSet<Set<String>>();
+        Map<Integer, List<String>> parts = partitionByLength(inputIn);
+        for (List<String> words : parts.values()) {
+            result.addAll(findAnagramsInListHelper(words));
+        }
+        return result;
+    }
+
+    private static Set<Set<String>> findAnagramsInListHelper(final List<String> inputIn) {
+        Set<Set<String>> result = new HashSet<Set<String>>();
         Queue<String> inputq = new LinkedList<String>(inputIn);
-        
+                
         while (inputq.size() != 0) {
             String word = inputq.remove();
             Set<String> group = new HashSet<String>();
             group.add(word);
-//incrementCount(word);
 
             Queue<String> dupe = new LinkedList<String>();
             while (inputq.size() != 0) {
@@ -81,5 +91,19 @@ incrementCount(word);
             return Arrays.equals(word1arr, word2arr);
         }
         return false;
+    }
+
+    public static Map<Integer, List<String>> partitionByLength(
+            final List<String> input) {
+        Map<Integer, List<String>> result = new HashMap<Integer, List<String>>();
+        for (String s : input) {
+            List<String> value = result.get(s.length());
+            if (value == null) {
+                result.put(s.length(), Lists.newArrayList(s));
+            } else {
+                value.add(s);
+            }
+        }
+        return result;
     }
 }
