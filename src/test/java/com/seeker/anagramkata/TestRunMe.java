@@ -53,19 +53,4 @@ public class TestRunMe {
         assertEquals(expected, result);
     }
     
-    @Test
-    public void isAnagramWithAnagramReturnsTrue() {
-        String word1 = "rats";
-        String word2 = "star";
-        
-        assertTrue(RunMe.isAnagram(word1, word2));
-    }
-    
-    @Test
-    public void isAnagramWithAnagramReturnsFalse() {
-        String word1 = "false";
-        String word2 = "star";
-        
-        assertFalse(RunMe.isAnagram(word1, word2));
-    }
 }
