@@ -1,7 +1,6 @@
 package com.seeker.anagramkata;
 
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -22,16 +21,8 @@ public class RunMe {
         return Arrays.asList(result.split("\\n"));
     }
 
-    public static List<String> toLower(final List<String> in) {
-        List<String> result = new ArrayList<String>();
-        for (String s : in) {
-            result.add(s.toLowerCase());
-        }
-        return result;
-    }
-
     public static void main(final String[] args) {
-        List<String> lines = toLower(openWordList());
+        List<String> lines = openWordList();
         System.out.println("There are " + lines.size() + " words");
         Collection<Set<String>> anagrams = findAnagramsInList(lines);
         System.out.println("Found " + anagrams.size() + " groups of anagrams");
@@ -55,7 +46,7 @@ public class RunMe {
         Map<String, Set<String>> anagrams = new HashMap<String, Set<String>>();
 
         for (String s : inputIn) {
-            char[] arr = s.toCharArray();
+            char[] arr = s.toLowerCase().toCharArray();
             Arrays.sort(arr);
             String key = new String(arr);
 
