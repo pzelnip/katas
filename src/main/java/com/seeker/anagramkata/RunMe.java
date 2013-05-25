@@ -4,14 +4,12 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
 import com.google.common.collect.Sets;
-import com.google.inject.internal.util.Lists;
 
 public class RunMe {
 
@@ -31,17 +29,7 @@ public class RunMe {
         }
     }
 
-    public static Collection<Set<String>> findAnagramsInList(
-            final List<String> inputIn) {
-        Set<Set<String>> result = new HashSet<Set<String>>();
-        Map<Integer, List<String>> parts = partitionByLength(inputIn);
-        for (List<String> words : parts.values()) {
-            result.addAll(findAnagramsInListHelper(words));
-        }
-        return result;
-    }
-
-    private static Collection<Set<String>> findAnagramsInListHelper(
+    public static Set<Set<String>> findAnagramsInList(
             final List<String> inputIn) {
         Map<String, Set<String>> anagrams = new HashMap<String, Set<String>>();
 
@@ -58,20 +46,6 @@ public class RunMe {
             }
         }
 
-        return anagrams.values();
-    }
-
-    public static Map<Integer, List<String>> partitionByLength(
-            final List<String> input) {
-        Map<Integer, List<String>> result = new HashMap<Integer, List<String>>();
-        for (String s : input) {
-            List<String> value = result.get(s.length());
-            if (value == null) {
-                result.put(s.length(), Lists.newArrayList(s));
-            } else {
-                value.add(s);
-            }
-        }
-        return result;
+        return Sets.newHashSet(anagrams.values());
     }
 }
