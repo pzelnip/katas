@@ -3,6 +3,7 @@ package com.seeker.anagramkata;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -20,7 +21,7 @@ public class RunMe {
         String result = new Scanner(istream).useDelimiter("\\A").next();
         return Arrays.asList(result.split("\\n"));
     }
-    
+
     public static List<String> toLower(final List<String> in) {
         List<String> result = new ArrayList<String>();
         for (String s : in) {
@@ -32,14 +33,15 @@ public class RunMe {
     public static void main(final String[] args) {
         List<String> lines = toLower(openWordList());
         System.out.println("There are " + lines.size() + " words");
-        Set<Set<String>> anagrams = findAnagramsInList(lines);
+        Collection<Set<String>> anagrams = findAnagramsInList(lines);
         System.out.println("Found " + anagrams.size() + " groups of anagrams");
         for (Set<String> group : anagrams) {
             System.out.println(group);
         }
     }
-    
-    public static Set<Set<String>> findAnagramsInList(final List<String> inputIn) {
+
+    public static Collection<Set<String>> findAnagramsInList(
+            final List<String> inputIn) {
         Set<Set<String>> result = new HashSet<Set<String>>();
         Map<Integer, List<String>> parts = partitionByLength(inputIn);
         for (List<String> words : parts.values()) {
@@ -48,14 +50,15 @@ public class RunMe {
         return result;
     }
 
-    private static Set<Set<String>> findAnagramsInListHelper(final List<String> inputIn) {
-        Map<String,Set<String>> anagrams = new HashMap<String,Set<String>>();
-        
+    private static Collection<Set<String>> findAnagramsInListHelper(
+            final List<String> inputIn) {
+        Map<String, Set<String>> anagrams = new HashMap<String, Set<String>>();
+
         for (String s : inputIn) {
             char[] arr = s.toCharArray();
             Arrays.sort(arr);
             String key = new String(arr);
-            
+
             Set<String> group = anagrams.get(key);
             if (group == null) {
                 anagrams.put(key, Sets.newHashSet(s));
@@ -63,14 +66,10 @@ public class RunMe {
                 group.add(s);
             }
         }
-        
-        Set<Set<String>> result = new HashSet<Set<String>>();
-        for (Set<String> sstring : anagrams.values()) {
-            result.add(sstring);
-        }
-        return result;
+
+        return anagrams.values();
     }
-    
+
     public static Map<Integer, List<String>> partitionByLength(
             final List<String> input) {
         Map<Integer, List<String>> result = new HashMap<Integer, List<String>>();
