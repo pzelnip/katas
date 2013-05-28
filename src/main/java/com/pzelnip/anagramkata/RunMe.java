@@ -1,6 +1,6 @@
-package com.seeker.anagramkata;
+package com.pzelnip.anagramkata;
 
-import static com.seeker.anagramkata.Anagrams.*;
+import static com.pzelnip.anagramkata.Anagrams.*;
 
 import java.io.InputStream;
 import java.io.PrintStream;

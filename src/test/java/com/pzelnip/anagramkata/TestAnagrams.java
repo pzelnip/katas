@@ -1,6 +1,6 @@
-package com.seeker.anagramkata;
+package com.pzelnip.anagramkata;
 
-import static com.seeker.anagramkata.Anagrams.*;
+import static com.pzelnip.anagramkata.Anagrams.*;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;

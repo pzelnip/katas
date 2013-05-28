@@ -1,4 +1,4 @@
-package com.seeker.anagramkata;
+package com.pzelnip.anagramkata;
 
 import java.util.Arrays;
 import java.util.HashMap;
