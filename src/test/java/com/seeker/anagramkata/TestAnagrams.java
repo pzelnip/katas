@@ -1,6 +1,6 @@
 package com.seeker.anagramkata;
 
-import static com.seeker.anagramkata.RunMe.*;
+import static com.seeker.anagramkata.Anagrams.*;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
@@ -14,7 +14,7 @@ import org.junit.Test;
 import com.google.common.collect.Sets;
 
 
-public class TestRunMe {
+public class TestAnagrams {
     
     @Test
     public void findAnagramsInListFindsAllAnagramsWithSmallInput() {
@@ -23,7 +23,7 @@ public class TestRunMe {
         expected.add(Sets.newHashSet(Arrays.asList("no", "on")));
         expected.add(Sets.newHashSet(Arrays.asList("bo")));
         
-        Collection<Set<String>> result = RunMe.findAnagramsInList(input);
+        Collection<Set<String>> result = findAnagramsInList(input);
         
         assertEquals(expected, result);
     }
@@ -35,7 +35,7 @@ public class TestRunMe {
         expected.add(Sets.newHashSet(Arrays.asList("no")));
         expected.add(Sets.newHashSet(Arrays.asList("bo")));
         
-        Collection<Set<String>> result = RunMe.findAnagramsInList(input);
+        Collection<Set<String>> result = findAnagramsInList(input);
         
         assertEquals(expected, result);
     }
@@ -46,7 +46,7 @@ public class TestRunMe {
         validSet.add(Sets.newHashSet(Arrays.asList("boo", "oob")));
         validSet.add(Sets.newHashSet(Arrays.asList("frank")));
         
-        boolean result = RunMe.validateAnagramSet(validSet);
+        boolean result = validateAnagramSet(validSet);
         
         assertTrue(result);
     }
@@ -57,7 +57,7 @@ public class TestRunMe {
         validSet.add(Sets.newHashSet(Arrays.asList("boo", "oob", "bob")));
         validSet.add(Sets.newHashSet(Arrays.asList("frank")));
         
-        boolean result = RunMe.validateAnagramSet(validSet);
+        boolean result = validateAnagramSet(validSet);
         
         assertFalse(result);
     }
@@ -69,7 +69,7 @@ public class TestRunMe {
         validSet.add(Sets.newHashSet(Arrays.asList("frank")));
         validSet.add(Sets.newHashSet(Arrays.asList("boo", "obo")));
         
-        boolean result = RunMe.validateAnagramSet(validSet);
+        boolean result = validateAnagramSet(validSet);
         
         assertFalse(result);
     }
@@ -79,7 +79,7 @@ public class TestRunMe {
         String word1 = "adam";
         String word2 = "mada";
         
-        assertEquals(RunMe.anagramHash(word1), RunMe.anagramHash(word2));
+        assertEquals(anagramHash(word1), anagramHash(word2));
     }
 
     @Test
@@ -87,7 +87,7 @@ public class TestRunMe {
         String word1 = "adam";
         String word2 = "mood";
         
-        assertNotEquals(RunMe.anagramHash(word1), RunMe.anagramHash(word2));
+        assertNotEquals(anagramHash(word1), anagramHash(word2));
     }
 
     @Test
@@ -95,11 +95,11 @@ public class TestRunMe {
         String word1 = "moody";
         String word2 = "mood";
         
-        assertNotEquals(RunMe.anagramHash(word1), RunMe.anagramHash(word2));
+        assertNotEquals(anagramHash(word1), anagramHash(word2));
     }
     
     @Test
     public void findAnagramsInListIsValidOnOpenWordListInput() {
-        assertTrue(validateAnagramSet(findAnagramsInList(openWordList())));
+        assertTrue(validateAnagramSet(findAnagramsInList(RunMe.openWordList())));
     }
 }

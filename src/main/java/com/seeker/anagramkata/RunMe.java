@@ -1,20 +1,19 @@
 package com.seeker.anagramkata;
 
+import static com.seeker.anagramkata.Anagrams.*;
+
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-import com.google.common.collect.Sets;
-
 public class RunMe {
 
-    public static List<String> openWordList() {
+    static List<String> openWordList() {
         InputStream istream = RunMe.class.getResourceAsStream("/wordlist.txt");
         String result = new Scanner(istream).useDelimiter("\\A").next();
         return Arrays.asList(result.split("\\n"));
@@ -85,52 +84,4 @@ public class RunMe {
             System.out.println(group);
         }
     }
-
-    public static Set<Set<String>> findAnagramsInList(final List<String> inputIn) {
-        Map<String, Set<String>> anagrams = new HashMap<String, Set<String>>();
-
-        // O(m * n * log(n)), where m is the number of words, and n is the 
-        // length of word
-        for (String s : inputIn) {
-            char[] arr = s.toLowerCase().toCharArray();
-            Arrays.sort(arr);
-            String key = new String(arr);
-
-            Set<String> group = anagrams.get(key);
-            if (group == null) {
-                anagrams.put(key, Sets.newHashSet(s));
-            } else {
-                group.add(s);
-            }
-        }
-
-        return Sets.newHashSet(anagrams.values());
-    }
-    
-    public static boolean validateAnagramSet(final Set<Set<String>> anagrams) {
-        Set<String> seenKeys = new HashSet<String>();
-        for (Set<String> group : anagrams) {
-            String key = anagramHash(group.iterator().next());
-            
-            if (seenKeys.contains(key)) {
-                return false;
-            }
-
-            for (String word : group) {
-                if (!anagramHash(word).equals(key)) {
-                    return false;
-                }
-            }
-            seenKeys.add(key);
-        }
-        return true;
-    }
-
-    public static String anagramHash(final String word1) {
-        char[] arr = word1.toLowerCase().toCharArray();
-        Arrays.sort(arr);
-        return new String(arr);
-    }
-    
-    
 }
