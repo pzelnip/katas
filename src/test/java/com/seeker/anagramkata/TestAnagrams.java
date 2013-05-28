@@ -73,7 +73,7 @@ public class TestAnagrams {
         
         assertFalse(result);
     }
-
+    
     @Test
     public void anagramHashReturnsSameResultForTwoAnagrams() {
         String word1 = "adam";
@@ -101,5 +101,20 @@ public class TestAnagrams {
     @Test
     public void findAnagramsInListIsValidOnOpenWordListInput() {
         assertTrue(validateAnagramSet(findAnagramsInList(RunMe.openWordList())));
+    }
+    
+    @Test
+    public void findAnagramsInListReturnsFullPartitionOnOpenWordListInput() {
+        List<String> input = RunMe.openWordList();
+        Set<String> expected = new HashSet<String>(input);
+
+        Set<Set<String>> anagrams = findAnagramsInList(input);
+        Set<String> flattened = new HashSet<String>();
+        for (Set<String> group : anagrams) {
+            flattened.addAll(group);
+        }
+        
+        assertEquals(expected.size(), flattened.size());
+        assertEquals(expected, flattened);
     }
 }
