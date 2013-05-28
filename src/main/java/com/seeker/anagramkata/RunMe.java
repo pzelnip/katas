@@ -3,6 +3,7 @@ package com.seeker.anagramkata;
 import static com.seeker.anagramkata.Anagrams.*;
 
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -11,7 +12,10 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-public class RunMe {
+public final class RunMe {
+    private static PrintStream out = System.out;
+    
+    private RunMe() {}
 
     static List<String> openWordList() {
         InputStream istream = RunMe.class.getResourceAsStream("/wordlist.txt");
@@ -46,42 +50,43 @@ public class RunMe {
             }
         }
 
+        final int colwidth = 80;
         double avglen = (total * 1.0) / words.size();
-        System.out.println("There are " + words.size() + " words");
-        System.out.println("Average length: " + avglen);
-        System.out.println(String.format("Max length: %s (%s)", maxword, max));
-        System.out.println(String.format("Min length: %s (%s)", minword, min));
-        System.out.println("Histogram:");
+        out.println("There are " + words.size() + " words");
+        out.println("Average length: " + avglen);
+        out.println(String.format("Max length: %s (%s)", maxword, max));
+        out.println(String.format("Min length: %s (%s)", minword, min));
+        out.println("Histogram:");
         for (int x = min; x <= max; x++) {
             Integer count = frequencies.get(x);
-            System.out.print(String.format("%2d: ", x));
+            out.print(String.format("%2d: ", x));
             if (count != null) {
-                for (int y = 0; y < count / 80; y++) {
-                    System.out.print("X");
+                for (int y = 0; y < count / colwidth; y++) {
+                    out.print("X");
                 }
-                if (count / 80 < 1 && count != 0) {
-                    System.out.print("X");
+                if (count / colwidth < 1 && count != 0) {
+                    out.print("X");
                 }
             }
-            System.out.println();
+            out.println();
         }
 
-        System.out.print("Histogram raw counts: ");
+        out.print("Histogram raw counts: ");
         for (int x = min; x <= max; x++) {
             Integer count = frequencies.get(x);
-            System.out.print(String
+            out.print(String
                     .format("%s ", (count == null ? "0" : count)));
         }
-        System.out.println();
+        out.println();
     }
 
     public static void main(final String[] args) {
         List<String> lines = openWordList();
         spitStats(lines);
         Collection<Set<String>> anagrams = findAnagramsInList(lines);
-        System.out.println("Found " + anagrams.size() + " groups of anagrams");
+        out.println("Found " + anagrams.size() + " groups of anagrams");
         for (Set<String> group : anagrams) {
-            System.out.println(group);
+            out.println(group);
         }
     }
 }
