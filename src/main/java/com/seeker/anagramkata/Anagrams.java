@@ -10,20 +10,22 @@ import java.util.Set;
 import com.google.common.collect.Sets;
 
 /**
- * This class contains code that is a solution for Dave Thomas' 6th kata --
- * the anagram finder.
+ * This class contains code that is a solution for Dave Thomas' 6th kata -- the
+ * anagram finder.
  * 
- * @see http://codekata.pragprog.com/2007/01/kata_six_anagra.html
+ * @see <a
+ *      href="http://codekata.pragprog.com/2007/01/kata_six_anagra.html">http://codekata.pragprog.com/2007/01/kata_six_anagra.html</a>
  */
 public final class Anagrams {
-    
-    private Anagrams() {}
-    
+
+    private Anagrams() {
+    }
+
     /**
      * Function which maps a word to a form which is unique to all anagrams of
      * that word. That is, if A and B are words which are anagrams of each
      * other, then {@code anagramHash(A) == anagramHash(B)}, and if A and B are
-     * not anagrams of each other, then it is guaranteed that 
+     * not anagrams of each other, then it is guaranteed that
      * {@code anagramHash(A) != anagramHash(B)}
      * 
      * @param word1
@@ -43,8 +45,10 @@ public final class Anagrams {
      * comparing words, so "Adam", "mada", "aMdA" are all anagrams of each
      * other.
      * 
-     * <p>This implementation runs in O(m * n * log(n)) time, where m is the 
-     * length of {@code words}, and n is the length of each word.</p>
+     * <p>
+     * This implementation runs in O(m * n * log(n)) time, where m is the length
+     * of {@code words}, and n is the length of each word.
+     * </p>
      * 
      * @param words
      *            the list of words to process.
