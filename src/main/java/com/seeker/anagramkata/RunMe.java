@@ -7,15 +7,18 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
 public final class RunMe {
+
     private static PrintStream out = System.out;
-    
-    private RunMe() {}
+
+    private RunMe() {
+    }
 
     static List<String> openWordList() {
         InputStream istream = RunMe.class.getResourceAsStream("/wordlist.txt");
@@ -74,8 +77,7 @@ public final class RunMe {
         out.print("Histogram raw counts: ");
         for (int x = min; x <= max; x++) {
             Integer count = frequencies.get(x);
-            out.print(String
-                    .format("%s ", (count == null ? "0" : count)));
+            out.print(String.format("%s ", (count == null ? "0" : count)));
         }
         out.println();
     }
@@ -85,8 +87,14 @@ public final class RunMe {
         spitStats(lines);
         Collection<Set<String>> anagrams = findAnagramsInList(lines);
         out.println("Found " + anagrams.size() + " groups of anagrams");
+        Set<String> biggestGroup = new HashSet<String>();
         for (Set<String> group : anagrams) {
             out.println(group);
+            if (group.size() > biggestGroup.size()) {
+                biggestGroup = group;
+            }
         }
+        out.println(String.format("Biggest group had %d elements (was %s)",
+                biggestGroup.size(), biggestGroup));
     }
 }
