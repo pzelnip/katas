@@ -1,6 +1,6 @@
-package com.pzelnip.fizzbuzzkata;
+package com.pzelnip.katas.fizzbuzzkata;
 
-import static com.pzelnip.fizzbuzzkata.FizzBuzz.*;
+import static com.pzelnip.katas.fizzbuzzkata.FizzBuzz.*;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;

@@ -1,6 +1,6 @@
-package com.pzelnip.anagramkata;
+package com.pzelnip.katas.anagramkata;
 
-import static com.pzelnip.anagramkata.Anagrams.*;
+import static com.pzelnip.katas.anagramkata.Anagrams.*;
 
 import java.io.InputStream;
 import java.io.PrintStream;
