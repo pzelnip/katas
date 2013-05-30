@@ -1,8 +1,7 @@
 # Katas
 
 This repo holds some of my solutions to various coding katas I've attempted.  Note that for some of the katas 
-alternate approaches were taken in previous commits, thus to see all the different ways I've solved them, you
-(currently) have to look through the commit history.
+alternate approaches were taken in previous commits, and are tagged as such.
 
 # Katas Done
 
