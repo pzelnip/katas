@@ -1,6 +1,6 @@
-package com.pzelnip.anagramkata;
+package com.pzelnip.katas.anagramkata;
 
-import static com.pzelnip.anagramkata.Anagrams.*;
+import static com.pzelnip.katas.anagramkata.Anagrams.*;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
@@ -12,6 +12,7 @@ import java.util.Set;
 import org.junit.Test;
 
 import com.google.common.collect.Sets;
+import com.pzelnip.katas.anagramkata.RunMe;
 
 
 public class TestAnagrams {

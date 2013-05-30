@@ -1,4 +1,4 @@
-package com.pzelnip.fizzbuzzkata;
+package com.pzelnip.katas.fizzbuzzkata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
