@@ -1,4 +1,4 @@
-package com.pzelnip.fizzbuzzkata;
+package com.pzelnip.katas.fizzbuzzkata;
 
 public class RunMe {
 

@@ -3,13 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.pzelnip</groupId>
-	<artifactId>anagramkata</artifactId>
+	<artifactId>katas</artifactId>
 	<version>0.1</version>
 	<packaging>jar</packaging>
 	
-	<name>Anagram Kata</name>
-	<description>Given a file containing one word per line, print out all the combinations of words that are anagrams; each line in the output contains all the words from the input that are anagrams of each other</description>
-	<url>http://codekata.pragprog.com/2007/01/kata_six_anagra.html</url>
+	<name>Katas</name>
+	<description>Some coding katas I've attempted</description>
+	<url>https://github.com/pzelnip/katas</url>
 	<inceptionYear>2013</inceptionYear>
 
 	<properties>
@@ -97,16 +97,6 @@
 		</plugins>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>central</id>
-			<url>http://192.168.40.42:8081/artifactory/repo</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	
 	<dependencies>
 		<dependency>
 			<groupId>org.javatuples</groupId>
