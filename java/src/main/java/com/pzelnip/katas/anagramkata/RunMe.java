@@ -53,7 +53,13 @@ public final class RunMe {
             }
         }
 
-        final int colwidth = 80;
+        int colwidth = 0;
+        for (Integer count : frequencies.values()) {
+            if (colwidth < count) {
+                colwidth = count;
+            }
+        }
+        
         double avglen = (total * 1.0) / words.size();
         out.println("There are " + words.size() + " words");
         out.println("Average length: " + avglen);
@@ -64,10 +70,7 @@ public final class RunMe {
             Integer count = frequencies.get(x);
             out.print(String.format("%2d: ", x));
             if (count != null) {
-                for (int y = 0; y < count / colwidth; y++) {
-                    out.print("X");
-                }
-                if (count / colwidth < 1 && count != 0) {
+                for (int y = 0; y < (count * 1.0 / colwidth) * 80; y++) {
                     out.print("X");
                 }
             }
